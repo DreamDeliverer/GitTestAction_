@@ -29,8 +29,11 @@ jobs:
     # step 3:Install dependencies
     - name: Install dependencies
       run: pip install -r requirement.txt
+            pip install pytest
+
+    - name: Set PYTHONPATH
+      run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)/src" >> $GITHUB_ENV
 
     # step 4:run test
     - name: run test
-      run:
-        pytest
+      run: pytest
